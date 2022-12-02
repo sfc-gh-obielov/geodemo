@@ -45,7 +45,7 @@ def choropleth_map(df_aggreg, column_name, border_color = 'gray', fill_opacity =
     
     
     if initial_map is None:
-        initial_map = Map(location= [52.21946399342579, 5.307063993936322], zoom_start=8, tiles="cartodbpositron")
+        initial_map = Map(location= [63.789575, 26.650416], zoom_start=8, tiles="cartodbpositron")
 
     #the colormap 
     #color names accepted https://github.com/python-visualization/branca/blob/master/branca/_cnames.json

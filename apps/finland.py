@@ -92,9 +92,9 @@ def app():
         # Set geo data format to WKT
     sess.sql("ALTER SESSION SET GEOMETRY_OUTPUT_FORMAT='WKT'").collect()
         # Read SRID from GEO column
-    srid = sess.sql("SELECT MIN(ST_SRID(GEOMETRY)) AS srid FROM GEOLAB.DEMO.FINLAND").collect()
+    srid = sess.sql("SELECT MIN(ST_SRID(GEOMETRY)) AS srid FROM GEOLAB.GEOMETRY.FINLAND").collect()
     srid = pd.DataFrame(srid).loc[0]["SRID"]
-        # SELECT FEATURE, GEO FROM GEOLAB.DEMO.FINLAND
+        # SELECT FEATURE, GEO FROM GEOLAB.GEOMETRY.FINLAND
     spatialfeatures = sess.table('FINLAND').select(col("NATCODE"),col("GEOMETRY"))
         # Create DataFrame from query results
     df = pd.DataFrame(spatialfeatures.collect())

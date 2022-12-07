@@ -86,7 +86,7 @@ def choropleth_map(df_aggreg, column_name, border_color = 'gray', fill_opacity =
 def app():
 
     st.title("Snowflake Geometry Example")
-    st.markdown("This map shows the geographic objects from GEOLAB.DEMO.FINLAND table", unsafe_allow_html=True)
+    st.markdown("This map shows the geographic objects from geolab.geometry.finland table", unsafe_allow_html=True)
         # Create a session with Snowflake
     sess = Session.builder.configs(st.secrets["geo-demos"]).create()
         # Set geo data format to WKT
@@ -94,7 +94,7 @@ def app():
         # Read SRID from GEO column
     srid = sess.sql("SELECT MIN(ST_SRID(GEOMETRY)) AS srid FROM GEOLAB.GEOMETRY.FINLAND").collect()
     srid = pd.DataFrame(srid).loc[0]["SRID"]
-        # SELECT FEATURE, GEO FROM GEOLAB.GEOMETRY.FINLAND
+        # SELECT FEATURE, GEO FROM geolab.geometry.finland
     spatialfeatures = sess.table('FINLAND').select(col("NATCODE"),col("GEOMETRY"))
         # Create DataFrame from query results
     df = pd.DataFrame(spatialfeatures.collect())
